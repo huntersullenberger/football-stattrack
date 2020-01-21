@@ -1,4 +1,4 @@
-print("Baby Yoda")
-x = 2
-y = 2
-print(x + y)
+class Player:
+
+    def _init_(self, name):
+        self.name = name
