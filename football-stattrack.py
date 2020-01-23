@@ -7,7 +7,7 @@ root.geometry("650x550")
 
 
 def func_exit():
-    m_box = messagebox.askquestion("Exit", "Are you sure you want to exit?")
+    m_box = messagebox.askquestion("Exit", "Are you sure you want to exit?",icon='warning')
     if m_box == 'yes':
         root.destroy()
 
