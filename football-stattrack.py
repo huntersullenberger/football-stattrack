@@ -34,18 +34,68 @@ file.add_command(label='Exit', compound=LEFT, command=func_exit)
 
 class Player:
 
-    def _init_(self, fName, lName, num, height, weight, gpa, bench, squat, vert, fDash):
-        self.fName = fName
-        self.lName = lName
-        self.num = num
-        self.height = height
-        self.weight = weight
-        self.gpa = gpa
-        self.bench = bench
-        self.squat = squat
-        self.vert = vert
-        self.fDash = fDash
+    def __init__(self, fName, lName, num, height, weight, gpa, bench, squat, vert, fDash):
+        self.__fName = fName
+        self.__lName = lName
+        self.__num = num
+        self.__height = height
+        self.__weight = weight
+        self.__gpa = gpa
+        self.__bench = bench
+        self.__squat = squat
+        self.__vert = vert
+        self.__fDash = fDash
 
+    def getfName(self):
+        return self.__fName
+
+    def getlName(self):
+        return self.__lName
+
+    def getNum(self):
+        return self.__num
+
+    def getHeight(self):
+        return self.__height
+
+    def setHeight(self, hgt):
+        self.__height = hgt
+
+    def getWeight(self):
+        return self.__weight
+
+    def setWeight(self, wgt):
+        self.__weight = wgt
+
+    def getGPA(self):
+        return self.__gpa
+
+    def setGPA(self, gpa):
+        self.__gpa = gpa
+
+    def getBench(self):
+        return self.__bench
+
+    def setBench(self, bench):
+        self.__bench = bench
+
+    def getSquat(self):
+        return self.__squat
+
+    def setSquat(self, squat):
+        self.__squat = squat
+
+    def getVert(self):
+        return self.__vert
+
+    def setVert(self, vert):
+        self.__vert = vert
+
+    def getfDash(self):
+        return self.__fDash
+
+    def setfDash(self, dash):
+        self.__fDash = dash
 
 root.mainloop()
 
