@@ -1,9 +1,19 @@
 from tkinter import *
-from tkinter import messagebox
+from tkinter import messagebox, Label
+import datetime
 
 root = Tk()
 root.title("Football Stat Track")
 root.geometry("650x550")
+root.configure(background='green')
+date = datetime.datetime.now().date()
+
+heading = Label(root, text='Football Stat Track', font='arial 15 bold', fg='#ADD8E6', bg='green')
+heading.pack()
+
+
+date_lbl = Label(root,text="Today's Date: " + str(date),font='arial 12 bold',fg='#ADD8E6', bg='green')
+date_lbl.pack()
 
 
 def func_exit():
