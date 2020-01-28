@@ -1,3 +1,6 @@
+import sqlite3
+conn = sqlite3.connect('football.db')
+
 from tkinter import *
 from tkinter import messagebox, Label
 import datetime
@@ -47,9 +50,4 @@ class Player:
 root.mainloop()
 
 
-#Adrianna Ambeau Database Code
-#Note that you must create the c:\sqlite\db folder first before you execute the program.
-#Or you can place the database file a folder of your choice.
 
-import sqlite3
-conn = sqlite3.connect('football.db')
