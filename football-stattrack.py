@@ -1,38 +1,49 @@
 import sqlite3
 from tkinter import *
-from tkinter import messagebox, Label
+from tkinter import messagebox, Label, Button
 import datetime
+import add_player
 
 conn = sqlite3.connect('football.db')
 
 root = Tk()
 root.title("Football Stat Track")
 root.geometry("650x550")
+root.resizable(False, False)
 root.configure(background='green')
 
-
+# heading
 heading = Label(root, text='Football Stat Track', font='arial 15 bold', fg='#9AFEFF', bg='green')
 heading.pack()
 
+# date
 date = datetime.datetime.now().date()
 date_lbl = Label(root,text="Today's Date: " + str(date),font='arial 12 bold',fg='#9AFEFF', bg='green')
 date_lbl.pack()
 
 
 def func_exit():
-    m_box = messagebox.askquestion("Exit", "Are you sure you want to exit?",icon='warning')
+    m_box = messagebox.askquestion("Exit", "Are you sure you want to exit?", icon='warning')
     if m_box == 'yes':
         root.destroy()
 
 
+# menu bar
 menu_bar = Menu(root)
 root.config(menu=menu_bar)
 file = Menu(menu_bar, tearoff=0)
 menu_bar.add_cascade(label='File', menu=file)
 file.add_command(label='Exit', compound=LEFT, command=func_exit)
 
-btn_create = Button(root, text='Create', font='arial 12 bold')
-btn_create.place(x=300, y=100)
+
+# create window
+def open_add_window():
+    create_window=add_player.add_player()
+
+
+# create button
+btn_create = Button(root, text='Add A Player', font='arial 12 bold', command=open_add_window)
+btn_create.place(x=270, y=100)
 
 
 class Player:
@@ -100,7 +111,6 @@ class Player:
     def setfDash(self, dash):
         self.__fDash = dash
 
+
 root.mainloop()
-
-
 
