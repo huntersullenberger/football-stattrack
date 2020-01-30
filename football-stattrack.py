@@ -38,12 +38,12 @@ file.add_command(label='Exit', compound=LEFT, command=func_exit)
 
 # create window
 def open_add_window():
-    create_window=add_player.add_player()
+    add_window=add_player.add_player()
 
 
 # create button
-btn_create = Button(root, text='Add A Player', font='arial 12 bold', command=open_add_window)
-btn_create.place(x=270, y=100)
+btn_add = Button(root, text='Add A Player', font='arial 12 bold', command=open_add_window)
+btn_add.place(x=270, y=100)
 
 
 class Player:
