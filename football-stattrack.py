@@ -1,49 +1,46 @@
 import sqlite3
 from tkinter import *
-from tkinter import messagebox, Label, Button
-import datetime
+from tkinter import Label, Button
+import my_players
 import add_player
+import datetime
 
 conn = sqlite3.connect('football.db')
 
-root = Tk()
-root.title("Football Stat Track")
-root.geometry("650x550")
-root.resizable(False, False)
-root.configure(background='green')
-
-# heading
-heading = Label(root, text='Football Stat Track', font='arial 15 bold', fg='#9AFEFF', bg='green')
-heading.pack()
-
-# date
 date = datetime.datetime.now().date()
-date_lbl = Label(root,text="Today's Date: " + str(date),font='arial 12 bold',fg='#9AFEFF', bg='green')
-date_lbl.pack()
 
 
-def func_exit():
-    m_box = messagebox.askquestion("Exit", "Are you sure you want to exit?", icon='warning')
-    if m_box == 'yes':
-        root.destroy()
+class Application(object):
+    def __init__(self,master):
+        self.master = master
 
+        # Frames
+        self.top=Frame(master,height=150,bg='green')
+        self.top.pack(fill=X)
+        self.bottom=Frame(master,height=500,bg='#adff2f')
+        self.bottom.pack(fill=X)
 
-# menu bar
-menu_bar = Menu(root)
-root.config(menu=menu_bar)
-file = Menu(menu_bar, tearoff=0)
-menu_bar.add_cascade(label='File', menu=file)
-file.add_command(label='Exit', compound=LEFT, command=func_exit)
+        # Today's Date
+        self.heading = Label(self.top, text='Football Stat Track', font='arial 15 bold', fg='#9AFEFF', bg='green')
+        self.heading.place(x=260, y=60)
+        self.date_lbl = Label(self.top, text="Today's Date: " + str(date), font='arial 12 bold', fg='#9AFEFF', bg='green')
+        self.date_lbl.place(x=450, y=5)
 
+        # My Players Button
+        self.players_btn = Button(self.bottom, text='    My Players   ', font='arial 12 bold',
+                                  command=self.open_my_players)
+        self.players_btn.place(x=250, y=10)
 
-# create window
-def open_add_window():
-    add_window=add_player.add_player()
+        # Add A Player Button
+        self.btn_add_player = Button(self.bottom, text='  Add A Player   ', font='arial 12 bold',
+                                     command=self.open_add_players)
+        self.btn_add_player.place(x=250, y=70)
 
+    def open_my_players(self):
+        players = my_players.my_players()
 
-# create button
-btn_add = Button(root, text='Add A Player', font='arial 12 bold', command=open_add_window)
-btn_add.place(x=270, y=100)
+    def open_add_players(self):
+        add_players_window = add_player.add_player()
 
 
 class Player:
@@ -112,5 +109,15 @@ class Player:
         self.__fDash = dash
 
 
-root.mainloop()
+def main():
+    root = Tk()
+    app = Application(root)
+    root.title("Football Stattrack")
+    root.geometry("650x550+350+200")
+    root.resizable(False,False)
+    root.mainloop()
+
+
+if __name__ == '__main__':
+    main()
 
